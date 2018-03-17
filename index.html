@@ -10,46 +10,36 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
-    
-    <title>Hello, world!</title>
+
+    <title>Current Train Schedule</title>
 </head>
 
 <body>
     <header>
-        <h1>Train Times</h1>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Current Train Schedule</h1>
+            
+        </div>
+    </div>
     </header>
 
     <div class="container">
         <div class="row">
             <div class="trainPanel col-md-10">
                 <panel>
-                    <table class="darkTable">
+                    <table class="table table-bordered table-striped table-dark">
                         <thead>
                             <tr>
-                                <th>Train Name</th>
-                                <th>Destination</th>
-                                <th>Frequency (Mins)</th>
-                                <th>Next Arrival</th>
-                                <th>Minutes Away</th>
+                                <th scope="col">Train</th>
+                                <th scope="col">Destination</th>
+                                <th scope="col">Frequency</th>
+                                <th scope="col">Initial Time</th>
+                                <th scope="col">Next Arrival</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <td>foot1</td>
-                                <td>foot2</td>
-                                <td>foot3</td>
-                                <td>foot4</td>
-                                <td>foot5</td>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            <tr>
-                                <td>Amtrak Express</td>
-                                <td>Austin</td>
-                                <td>45</td>
-                                <td></td>
-                                <td>cell5_1</td>
-                            </tr>
+                        <tbody id="tBody">
+                            
                         </tbody>
                     </table>
                 </panel>
@@ -74,7 +64,7 @@
                         <label for="Frequency">Frequency (mins)</label>
                         <input type="text" class="form-control" id="freq-input" placeholder="0">
                     </div>
-                    <button type="button" class="submitBtn btn-outline-dark">Submit</button>
+                    <button type="button" class="submitBtn btn-outline-primary">Submit</button>
                 </form>
             </div>
         </div>
@@ -84,6 +74,7 @@
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-database.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="assets/javascript/train.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -91,7 +82,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <!-- Optional JavaScript -->
-    
+
 </body>
 
 </html>

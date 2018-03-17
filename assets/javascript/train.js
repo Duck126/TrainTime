@@ -1,5 +1,5 @@
 $(document).ready(function(){
-window.alert("working");
+
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyC3r1m5xzrpCTbgrXrLQkQRkMBM6DnjDVU",
@@ -13,41 +13,50 @@ window.alert("working");
 
     //Gets a referance to the database 
     var database = firebase.database();
-
     
-
+    console.log(moment());
+    
+    
     //Functions
     $(".submitBtn").on("click", function(){
         trainName = $("#train-input").val().trim();
         destination = $("#destination-input").val().trim();
-        time = $("#time-input").val().trim();
+        time = moment($("#time-input").val().trim(), 'hh:mm');
         freq = $("#freq-input").val().trim();
         
-
-        database.ref().set({
-            trainName: trainName,
+        database.ref().push({
+            trainName: trainName, 
             destination: destination,
             time: time,
             freq: freq,
         });
+        $('input').val('');
     });
 
-    database.ref().on("value", function(snapshot){
+    //var duration = moment.duration(end.diff(startTime));
 
-        console.log(snapshot.val());
-        console.log(snapshot.val().trainName);
-        console.log(snapshot.val().destination);
-        console.log(snapshot.val().time);
-        console.log(snapshot.val().freq);
-
-        var tBody = $("tbody");
-        var tR = $("<tr>");
-        var tD = $("<td>");
-
+    database.ref().on("child_added", function (trainData) {
+        
+        var freqTime = trainData.val().freq;
+        var firstTime = moment(trainData.val().time).subtract(1, 'years');
+        var currentTime = moment();
         
 
+        //.format("hh:mm a");
+        
+        
+        console.log(currentTime);
+        //console.log(freqTime);
+        console.log(currentTime - "firstTime._i" );
+     
 
-       
-    })
+        $("#tBody").append("<tr><td> " + trainData.val().trainName +
+            " </td><td> " + trainData.val().destination +
+            " </td><td> " + trainData.val().freq +
+            " </td><td> " + trainData.val().time + 
+            "</td></tr>");
+    });
+
+    
 })
 
